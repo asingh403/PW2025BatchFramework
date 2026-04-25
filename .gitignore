@@ -1,4 +1,4 @@
-
+# Playwright
 # Playwright
 node_modules/
 /test-results/
@@ -6,3 +6,17 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Allure (IMPORTANT)
+allure-report/
+allure-results/
+
+# VS Code history (CRITICAL)
+.history/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
