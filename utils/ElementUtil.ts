@@ -213,7 +213,7 @@ export class ElementUtil{
     async waitForElementVisible(locator:flexibleLocator, timeout:number=5000):Promise<boolean>{
          try{
             await this.getLocator(locator).waitFor({state: 'visible', timeout});
-            console.log(`waited for elemenet to be visible`);
+            console.log(`waited for element to be visible`);
             return true;
         }
         catch{
