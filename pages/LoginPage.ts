@@ -28,8 +28,8 @@ export class LoginPage{
     /**
      * this method we will launch the PW browser and open the target URL
      */
-    async goToLoginPage(){
-        await this.page.goto('https://naveenautomationlabs.com/opencart/index.php?route=account/login');
+    async goToLoginPage(baseURL:string | undefined){
+        await this.page.goto(baseURL+'?route=account/login');
     }
 
     /**

@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
 import { ResultPage } from "../pages/ResultPage";
 import { ProductInfoPage } from "../pages/ProductInfoPage";
+import { test, expect } from '../fixtures/baseFixtures';
 
 // 3. Page actions/methods:
 // test@123, test_123@open.com
@@ -9,18 +9,11 @@ import { ProductInfoPage } from "../pages/ProductInfoPage";
 let search = [
   { searchKey: "macbook", productName: "MacBook Pro", imageCount: 4 },
   { searchKey: "macbook", productName: "MacBook Air", imageCount: 4 },
-  {
-    searchKey: "samsung",
-    productName: "Samsung Galaxy Tab 10.1",
-    imageCount: 7,
-  },
+  { searchKey: "samsung",productName: "Samsung Galaxy Tab 10.1",imageCount: 7 },
 ];
 
 for (let product of search) {
-  test(`verify product Header ${product.productName}`, async ({ page }) => {
-    let loginPage = new LoginPage(page);
-    await loginPage.goToLoginPage();
-    let homePage = await loginPage.doLogin("test_123@open.com", "test@123");
+  test(`verify product Header ${product.productName}`, async ({ homePage }) => {
     let resultPage: ResultPage = await homePage.doSearch(product.searchKey);
 
     let productInfoPage: ProductInfoPage = await resultPage.selectProduct(
@@ -32,12 +25,8 @@ for (let product of search) {
 }
 
 for (let product of search) {
-  test(`verify product Images ${product.productName} : ${product.imageCount}`, async ({
-    page,
-  }) => {
-    let loginPage = new LoginPage(page);
-    await loginPage.goToLoginPage();
-    let homePage = await loginPage.doLogin("test_123@open.com", "test@123");
+  test(`verify product Images ${product.productName} : ${product.imageCount}`, async ({ homePage }) => {
+
     let resultPage: ResultPage = await homePage.doSearch(product.searchKey);
 
     let productInfoPage: ProductInfoPage = await resultPage.selectProduct(
@@ -49,11 +38,8 @@ for (let product of search) {
     );
   });
 }
-  test(`verify product Metadata `, async ({ page }) => {
-    let loginPage = new LoginPage(page);
-    await loginPage.goToLoginPage();
-    let homePage = await loginPage.doLogin("test_123@open.com", "test@123");
-    
+  test(`verify product Metadata `, async ({ homePage }) => {
+
     let resultPage: ResultPage = await homePage.doSearch('macbook');
 
     let productInfoPage: ProductInfoPage = await resultPage.selectProduct('MacBook Pro');
@@ -69,10 +55,7 @@ for (let product of search) {
   });
 
 
-  test(`verify product Pricing `, async ({ page }) => {
-    let loginPage = new LoginPage(page);
-    await loginPage.goToLoginPage();
-    let homePage = await loginPage.doLogin("test_123@open.com", "test@123");
+  test(`verify product Pricing `, async ({ homePage }) => {
     
     let resultPage: ResultPage = await homePage.doSearch('macbook');
 

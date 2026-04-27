@@ -1,7 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
 import { ResultPage } from '../pages/ResultPage';
-
+import { test, expect } from '../fixtures/baseFixtures';
 // 3. Page actions/methods:
 // test@123, test_123@open.com
 
@@ -17,11 +15,8 @@ let searchData = [
 ];
 
 for(let product of searchData){
-test(`verify product search ${product.searchKey}`, async({ page }) => {
+test(`verify product search ${product.searchKey}`, async({ homePage }) => {
 
-  let loginPage = new LoginPage(page);
-  await loginPage.goToLoginPage();
-  let homePage = await loginPage.doLogin('test_123@open.com', 'test@123');
   let resultPage: ResultPage = await homePage.doSearch(product.searchKey);
   expect(await resultPage.getSearchResultCount()).toBe(product.resultsCount);
  });

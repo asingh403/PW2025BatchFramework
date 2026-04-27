@@ -6,7 +6,7 @@ import { ResultPage } from "../pages/ResultPage";
 
 export class HomePage {
   //Page locators/Objects/Object Reference
-  private readonly page: Page;
+  readonly page: Page;
   private readonly eleUtil: ElementUtil;
   private readonly logoutLink: Locator;
   private readonly loginLink: Locator;
@@ -51,19 +51,5 @@ export class HomePage {
     await this.eleUtil.click(this.searchIcon);
     return new ResultPage(this.page);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

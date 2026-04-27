@@ -1,22 +1,18 @@
-import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { test, expect } from '../fixtures/baseFixtures';
 
 // 3. Page actions/methods:
 // test@123, test_123@open.com
 
-test('verify valid login', async({ page }) => {
-
-  let loginPage = new LoginPage(page);
-  await loginPage.goToLoginPage();
-  let homePage = await loginPage.doLogin('test_123@open.com', 'test@123');
-  expect(await homePage.isUserLoggedIn()).toBeTruthy();
+test('verify valid login', async({ homePage }) => {
+  await expect(homePage.page).toHaveTitle('My Account');
 })
 
 
-test('verify invalid login', async({ page }) => {
+test('verify invalid login', async({ page, baseURL }) => {
 
   let loginPage = new LoginPage(page);
-  await loginPage.goToLoginPage();
+  await loginPage.goToLoginPage(baseURL);
   await loginPage.doLogin('test_123@open.com', 'test@123456');
   const errorMessage = await loginPage.getInvalidLoginMessage();
   expect(errorMessage).toContain('Warning: No match for E-Mail Address and/or Password.');

@@ -28,23 +28,5 @@ export class ResultPage {
     await this.eleUtil.click(this.page.getByRole('link', { name: `${productName}` }));
     return new ProductInfoPage(this.page);
 
-
   }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
