@@ -10,6 +10,7 @@ node_modules/
 # Allure (IMPORTANT)
 allure-report/
 allure-results/
+html-report/
 
 # VS Code history (CRITICAL)
 .history/

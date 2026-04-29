@@ -15,17 +15,18 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
+    ["list", { printSteps: true }],
     ["html"], 
     ["allure-playwright"],
-    ['playwright-html', { 
+    ['playwright-html-reporter', { 
       testFolder: 'tests',
       title: 'OPEN CART HTML Report',
-      project: 'QA Tests',
+      project: 'OPEN CART',
       release: '9.87.6',
       testEnvironment: 'DEV',
       embedAssets: true,
       embedAttachments: true,
-      outputFolder: 'playwright-html-report',
+      outputFolder: 'html-report',
       minifyAssets: true,
       startServer: true,
     }],
