@@ -15,50 +15,96 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
-    ['allure-playwright']
+    ["html"], 
+    ["allure-playwright"],
+    ['playwright-html', { 
+      testFolder: 'tests',
+      title: 'OPEN CART HTML Report',
+      project: 'QA Tests',
+      release: '9.87.6',
+      testEnvironment: 'DEV',
+      embedAssets: true,
+      embedAttachments: true,
+      outputFolder: 'playwright-html-report',
+      minifyAssets: true,
+      startServer: true,
+    }],
   ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     trace: "on-first-retry",
     headless: false,
-    screenshot: 'on-first-failure',
-    video: 'on',
-    baseURL: 'https://naveenautomationlabs.com/opencart/index.php',
-
+    screenshot: "on-first-failure",
+    video: "on",
+    baseURL: "https://naveenautomationlabs.com/opencart/index.php",
   },
 
-  metadata:{
-    appUserName: "test_123@open.com", 
-    appPassword:"test@123",
+  metadata: {
+    appUserName: "test_123@open.com",
+    appPassword: "test@123",
   },
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
+    {
+      name: "chromium",
+      use: {
+        channel: "msedge",
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
+    },
 
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
+    {
+      name: "firefox",
+      use: {
+        channel: "chrome",
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
+    },
 
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: "WebKit",
+      use: {
+        channel: "WebKit",
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
+    },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
+    {
+      name: "Microsoft Edge",
+      use: {
+        channel: "msedge",
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
+    },
     {
       name: "Google Chrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      use: {
+        channel: "chrome",
+        viewport: null,
+        launchOptions: {
+          args: ['--start-maximized'],
+          ignoreDefaultArgs: ["--window-size=1280,720"],
+        },
+      },
     },
   ],
 });

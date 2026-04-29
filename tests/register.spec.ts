@@ -1,6 +1,6 @@
 import { LoginPage } from '../pages/LoginPage';
 import { RegistrationPage } from '../pages/RegistrationPage';
-import { test, expect } from '../fixtures/baseFixtures';
+import { test, expect } from '@playwright/test';
 import fs from 'fs';
 import {parse} from 'csv-parse/sync';
 
