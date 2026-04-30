@@ -4,7 +4,7 @@ import { test, expect } from '../fixtures/baseFixtures';
 // 3. Page actions/methods:
 // test@123, test_123@open.com
 
-test('verify valid login', async({ homePage }) => {
+test('verify valid login @login @sanity ', async({ homePage }) => {
   await expect(homePage.page).toHaveTitle('My Account');
 })
 

@@ -13,7 +13,7 @@ let search = [
 ];
 
 for (let product of search) {
-  test(`verify product Header ${product.productName}`, async ({ homePage }) => {
+  test(`verify product Header ${product.productName}, {tag:['@product', '@sanity', '@regression']}`, async ({ homePage }) => {
     let resultPage: ResultPage = await homePage.doSearch(product.searchKey);
 
     let productInfoPage: ProductInfoPage = await resultPage.selectProduct(
@@ -25,7 +25,7 @@ for (let product of search) {
 }
 
 for (let product of search) {
-  test(`verify product Images ${product.productName} : ${product.imageCount}`, async ({ homePage }) => {
+  test(`verify product Images ${product.productName} : ${product.imageCount}, {tag:['@product', '@sanity', '@regression']}`, async ({ homePage }) => {
 
     let resultPage: ResultPage = await homePage.doSearch(product.searchKey);
 

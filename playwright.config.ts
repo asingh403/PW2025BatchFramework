@@ -48,54 +48,54 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: "chromium",
-      use: {
-        channel: "msedge",
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
-          ignoreDefaultArgs: ["--window-size=1280,720"],
-        },
-      },
-    },
+    // {
+    //   name: "chromium",
+    //   use: {
+    //     channel: "msedge",
+    //     viewport: null,
+    //     launchOptions: {
+    //       args: ['--start-maximized'],
+    //       ignoreDefaultArgs: ["--window-size=1280,720"],
+    //     },
+    //   },
+    // },
 
-    {
-      name: "firefox",
-      use: {
-        channel: "chrome",
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
-          ignoreDefaultArgs: ["--window-size=1280,720"],
-        },
-      },
-    },
+    // {
+    //   name: "firefox",
+    //   use: {
+    //     channel: "chrome",
+    //     viewport: null,
+    //     launchOptions: {
+    //       args: ['--start-maximized'],
+    //       ignoreDefaultArgs: ["--window-size=1280,720"],
+    //     },
+    //   },
+    // },
 
-    {
-      name: "WebKit",
-      use: {
-        channel: "WebKit",
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
-          ignoreDefaultArgs: ["--window-size=1280,720"],
-        },
-      },
-    },
+    // {
+    //   name: "WebKit",
+    //   use: {
+    //     channel: "WebKit",
+    //     viewport: null,
+    //     launchOptions: {
+    //       args: ['--start-maximized'],
+    //       ignoreDefaultArgs: ["--window-size=1280,720"],
+    //     },
+    //   },
+    // },
 
     /* Test against branded browsers. */
-    {
-      name: "Microsoft Edge",
-      use: {
-        channel: "msedge",
-        viewport: null,
-        launchOptions: {
-          args: ['--start-maximized'],
-          ignoreDefaultArgs: ["--window-size=1280,720"],
-        },
-      },
-    },
+    // {
+    //   name: "Microsoft Edge",
+    //   use: {
+    //     channel: "msedge",
+    //     viewport: null,
+    //     launchOptions: {
+    //       args: ['--start-maximized'],
+    //       ignoreDefaultArgs: ["--window-size=1280,720"],
+    //     },
+    //   },
+    // },
     {
       name: "Google Chrome",
       use: {
