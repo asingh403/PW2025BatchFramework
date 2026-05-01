@@ -6,7 +6,7 @@ Welcome to the **PW2025BATCH-FRAMEWORK** automation project. Below you can find 
 
 ## Workflow Status
 
-[![Playwright Tests](https://github.com/asingh403/PW2025BatchFramework/actions/workflows/playwright.yml/badge.svg)](https://github.com/asingh403/PW2025BatchFramework/actions/workflows/playwright.yml)
+[![Playwright Tests](https://github.com/asingh403/PW2025BatchFramework/actions/workflows/playwright-run.yml/badge.svg)](https://github.com/asingh403/PW2025BatchFramework/actions/workflows/playwright-run.yml)
 
 ---
 
