@@ -80,7 +80,7 @@ jobs:
       # ✅ Clean old results
       - name: 🧹 Clean previous results
         run: |
-          rm -rf allure-results playwright-report playwright-html-report test-results
+          rm -rf allure-results playwright-report html-report test-results
 
       - name: 🧪 Run Tests
         run: |
@@ -94,8 +94,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: html-report-${{ github.event.inputs.environment }}
-          path: html-report/
+          name: playwright-report-${{ github.event.inputs.environment }}  # ← was html-report-$ENV
+          path: playwright-report/
           retention-days: 30
 
       - name: 📊 Upload Custom HTML Report
@@ -103,7 +103,7 @@ jobs:
         if: always()
         with:
           name: playwright-html-report-${{ github.event.inputs.environment }}
-          path: playwright-html-report/
+          path: html-report/
           retention-days: 30
 
       - name: 📊 Upload Allure Results
