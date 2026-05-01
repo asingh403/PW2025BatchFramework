@@ -1,102 +1,394 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Playwright Reports - PW_2025_Batch_Framework</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{background:#ffffff !important}
-    body{font-family:'JetBrains Mono',monospace;background:#ffffff !important;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:4rem 2rem 2rem}
-    .wrap{background:#fff;border-radius:14px;border:0.5px solid #e0ddd8;width:100%;max-width:480px;overflow:hidden;animation:fadeUp .5s ease both}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-    .header{padding:20px 24px 14px;border-bottom:0.5px solid #eee}
-    .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-    .title{font-size:14px;font-weight:500;color:#111;letter-spacing:-0.2px;display:flex;align-items:center;gap:8px}
-    .run-badge{display:flex;align-items:center;gap:5px;font-size:10px;color:#666;background:#f5f5f5;padding:3px 8px;border-radius:999px;border:0.5px solid #e0e0e0}
-    .run-dot{width:5px;height:5px;border-radius:50%;background:#45ba4b;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-    .meta{display:flex;gap:12px;flex-wrap:wrap}
-    .meta-tag{font-size:10px;color:#888;display:flex;align-items:center;gap:4px}
-    .list{padding:8px 0}
-    .item{display:flex;align-items:center;gap:12px;padding:14px 24px;cursor:pointer;position:relative;transition:background .18s;text-decoration:none}
-    .item:hover{background:#f9f8f6}
-    .item:hover .arrow{opacity:1;transform:translateX(0)}
-    .item:hover .desc-tooltip{opacity:1;transform:translateY(0)}
-    .item:hover .item-name{color:#111}
-    .item:hover .dot{transform:scale(1.4)}
-    .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;transition:transform .2s}
-    .item-name{font-size:12px;color:#444;flex:1;transition:color .18s;letter-spacing:0.2px}
-    .item-arrow-icon{opacity:0.2;flex-shrink:0;transition:opacity .18s}
-    .item:hover .item-arrow-icon{opacity:0.6}
-    .arrow{font-size:11px;color:#378ADD;opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s;white-space:nowrap}
-    .desc-tooltip{position:absolute;left:44px;bottom:calc(100% - 2px);background:#111;color:#fff;font-size:10px;padding:5px 10px;border-radius:6px;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none;z-index:10}
-    .desc-tooltip::after{content:'';position:absolute;top:100%;left:16px;border:4px solid transparent;border-top-color:#111}
-    .divider{height:0.5px;background:#f0ede8;margin:0 24px}
-    .footer{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-top:0.5px solid #f0ede8}
-    .footer-text{font-size:10px;color:#bbb}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="header">
-      <div class="header-top">
-        <div class="title">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="14" rx="3" fill="#111"/><path d="M4 8l2.5 2.5L12 5" stroke="#45ba4b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          PW_2025_Batch_Framework
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playwright Reports - PW_2025_Batch_Framework</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        background: #d0d4db !important;
+      }
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: #d0d4db !important;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 4rem 2rem 2rem;
+      }
+      .wrap {
+        background: #b8cfe8;
+        border-radius: 14px;
+        border: 0.5px solid #9ab8d8;
+        width: 100%;
+        max-width: 480px;
+        overflow: hidden;
+        animation: fadeUp 0.5s ease both;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .header {
+        padding: 20px 24px 14px;
+        border-bottom: 0.5px solid #9ab8d8;
+      }
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+      .title {
+        font-size: 14px;
+        font-weight: 500;
+        color: #1a2e42;
+        letter-spacing: -0.2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .run-badge {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 10px;
+        color: #2a4a6b;
+        background: rgba(255, 255, 255, 0.35);
+        padding: 3px 8px;
+        border-radius: 999px;
+        border: 0.5px solid #9ab8d8;
+      }
+      .run-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #45ba4b;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+      .meta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .meta-tag {
+        font-size: 10px;
+        color: #2a4a6b;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .list {
+        padding: 8px 0;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 24px;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.18s;
+        text-decoration: none;
+        background: transparent;
+      }
+      .item:hover {
+        background: rgba(255, 160, 50, 0.18);
+      }
+      .item:hover .arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .item:hover .desc-tooltip {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .item:hover .item-name {
+        color: #a84800;
+      }
+      .item:hover .dot {
+        transform: scale(1.4);
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+      }
+      .item-name {
+        font-size: 12px;
+        color: #1a2e42;
+        flex: 1;
+        transition: color 0.18s;
+        letter-spacing: 0.2px;
+      }
+      .item-arrow-icon {
+        opacity: 0.25;
+        flex-shrink: 0;
+        transition: opacity 0.18s;
+      }
+      .item:hover .item-arrow-icon {
+        opacity: 0.7;
+      }
+      .arrow {
+        font-size: 11px;
+        color: #c06000;
+        opacity: 0;
+        transform: translateX(-6px);
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        white-space: nowrap;
+      }
+      .desc-tooltip {
+        position: absolute;
+        left: 44px;
+        bottom: calc(100% - 2px);
+        background: #1a2e42;
+        color: #fff;
+        font-size: 10px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateY(4px);
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        pointer-events: none;
+        z-index: 10;
+      }
+      .desc-tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 16px;
+        border: 4px solid transparent;
+        border-top-color: #1a2e42;
+      }
+      .divider {
+        height: 0.5px;
+        background: #9ab8d8;
+        margin: 0 24px;
+      }
+      .footer {
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 0.5px solid #9ab8d8;
+      }
+      .footer-text {
+        font-size: 10px;
+        color: #2a4a6b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <div class="header-top">
+          <div class="title">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect x="1" y="1" width="14" height="14" rx="3" fill="#1a2e42" />
+              <path
+                d="M4 8l2.5 2.5L12 5"
+                stroke="#45ba4b"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            PW_2025_Batch_Framework
+          </div>
+          <div class="run-badge">
+            <span class="run-dot"></span><span>run complete</span>
+          </div>
         </div>
-        <div class="run-badge"><span class="run-dot"></span><span>run complete</span></div>
+        <div class="meta">
+          <span class="meta-tag">
+            <svg width="10" height="10" viewBox="0 0 10 10">
+              <circle
+                cx="5"
+                cy="5"
+                r="4"
+                fill="none"
+                stroke="ENV_COLOR"
+                stroke-width="1.2"
+              />
+              <circle cx="5" cy="5" r="1.5" fill="ENV_COLOR" />
+            </svg>
+            ENV_TOKEN
+          </span>
+          <span class="meta-tag">
+            <svg width="10" height="10" viewBox="0 0 10 10">
+              <rect
+                x="1"
+                y="1"
+                width="8"
+                height="8"
+                rx="2"
+                fill="none"
+                stroke="#1a5fa8"
+                stroke-width="1.2"
+              />
+              <path d="M3 5h4M5 3v4" stroke="#1a5fa8" stroke-width="1" />
+            </svg>
+            BROWSER_TOKEN
+          </span>
+          <span class="meta-tag">
+            <svg width="10" height="10" viewBox="0 0 10 10">
+              <circle
+                cx="5"
+                cy="5"
+                r="4"
+                fill="none"
+                stroke="#2a4a6b"
+                stroke-width="1.2"
+              />
+              <path
+                d="M5 2.5v2.5l1.5 1.5"
+                stroke="#2a4a6b"
+                stroke-width="1"
+                stroke-linecap="round"
+              />
+            </svg>
+            DATE_TOKEN
+          </span>
+        </div>
       </div>
-      <div class="meta">
-        <span class="meta-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="none" stroke="ENV_COLOR" stroke-width="1.2"/><circle cx="5" cy="5" r="1.5" fill="ENV_COLOR"/></svg>
-          ENV_TOKEN
-        </span>
-        <span class="meta-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" rx="2" fill="none" stroke="#378ADD" stroke-width="1.2"/><path d="M3 5h4M5 3v4" stroke="#378ADD" stroke-width="1"/></svg>
-          BROWSER_TOKEN
-        </span>
-        <span class="meta-tag">
-          <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="none" stroke="#999" stroke-width="1.2"/><path d="M5 2.5v2.5l1.5 1.5" stroke="#999" stroke-width="1" stroke-linecap="round"/></svg>
-          DATE_TOKEN
-        </span>
+      <div class="list">
+        <a
+          class="item"
+          href="ENV_TOKEN/playwright-report/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="desc-tooltip">
+            Built-in HTML report with traces, screenshots &amp; timeline
+          </div>
+          <svg class="dot" width="8" height="8" viewBox="0 0 8 8">
+            <circle cx="4" cy="4" r="4" fill="#45ba4b" />
+          </svg>
+          <span class="item-name">playwright-report</span>
+          <svg
+            class="item-arrow-icon"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+          >
+            <path
+              d="M2 6h8M6 2l4 4-4 4"
+              stroke="#45ba4b"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="arrow">→ open</span>
+        </a>
+        <div class="divider"></div>
+        <a
+          class="item"
+          href="ENV_TOKEN/playwright-html-report/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="desc-tooltip">
+            Custom reporter with embedded assets &amp; attachments
+          </div>
+          <svg class="dot" width="8" height="8" viewBox="0 0 8 8">
+            <circle cx="4" cy="4" r="4" fill="#1a5fa8" />
+          </svg>
+          <span class="item-name">html-report</span>
+          <svg
+            class="item-arrow-icon"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+          >
+            <path
+              d="M2 6h8M6 2l4 4-4 4"
+              stroke="#1a5fa8"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="arrow">→ open</span>
+        </a>
+        <div class="divider"></div>
+        <a
+          class="item"
+          href="ENV_TOKEN/allure-report/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="desc-tooltip">
+            Full Allure dashboard with history, trends &amp; categories
+          </div>
+          <svg class="dot" width="8" height="8" viewBox="0 0 8 8">
+            <circle cx="4" cy="4" r="4" fill="#f39c12" />
+          </svg>
+          <span class="item-name">allure-report</span>
+          <svg
+            class="item-arrow-icon"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+          >
+            <path
+              d="M2 6h8M6 2l4 4-4 4"
+              stroke="#f39c12"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="arrow">→ open</span>
+        </a>
+      </div>
+      <div class="footer">
+        <span class="footer-text"
+          >asingh403.github.io/PW2025BatchFramework</span
+        >
+        <svg width="32" height="16" viewBox="0 0 32 16" style="opacity: 0.3">
+          <rect x="0" y="6" width="6" height="4" rx="1" fill="#45ba4b" />
+          <rect x="8" y="4" width="6" height="8" rx="1" fill="#1a5fa8" />
+          <rect x="16" y="2" width="6" height="12" rx="1" fill="#f39c12" />
+          <rect x="24" y="5" width="6" height="6" rx="1" fill="#2a4a6b" />
+        </svg>
       </div>
     </div>
-    <div class="list">
-      <a class="item" href="ENV_TOKEN/playwright-report/index.html" target="_blank" rel="noopener noreferrer">
-        <div class="desc-tooltip">Built-in HTML report with traces, screenshots &amp; timeline</div>
-        <svg class="dot" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#45ba4b"/></svg>
-        <span class="item-name">playwright-report</span>
-        <svg class="item-arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="#45ba4b" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="arrow">→ open</span>
-      </a>
-      <div class="divider"></div>
-      <a class="item" href="ENV_TOKEN/playwright-html-report/index.html" target="_blank" rel="noopener noreferrer">
-        <div class="desc-tooltip">Custom reporter with embedded assets &amp; attachments</div>
-        <svg class="dot" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#378ADD"/></svg>
-        <span class="item-name">html-report</span>
-        <svg class="item-arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="#378ADD" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="arrow">→ open</span>
-      </a>
-      <div class="divider"></div>
-      <a class="item" href="ENV_TOKEN/allure-report/index.html" target="_blank" rel="noopener noreferrer">
-        <div class="desc-tooltip">Full Allure dashboard with history, trends &amp; categories</div>
-        <svg class="dot" width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#f39c12"/></svg>
-        <span class="item-name">allure-report</span>
-        <svg class="item-arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="#f39c12" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="arrow">→ open</span>
-      </a>
-    </div>
-    <div class="footer">
-      <span class="footer-text">asingh403.github.io/PW2025BatchFramework</span>
-      <svg width="32" height="16" viewBox="0 0 32 16" style="opacity:0.15">
-        <rect x="0" y="6" width="6" height="4" rx="1" fill="#45ba4b"/>
-        <rect x="8" y="4" width="6" height="8" rx="1" fill="#378ADD"/>
-        <rect x="16" y="2" width="6" height="12" rx="1" fill="#f39c12"/>
-        <rect x="24" y="5" width="6" height="6" rx="1" fill="#999"/>
-      </svg>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
