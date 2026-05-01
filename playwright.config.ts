@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import process from "process";
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -16,26 +17,29 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["list", { printSteps: true }],
-    ["html"], 
+    ["html"],
     ["allure-playwright"],
-    ['playwright-html-reporter', { 
-      testFolder: 'tests',
-      title: 'OPEN CART HTML Report',
-      project: 'OPEN CART',
-      release: '9.87.6',
-      testEnvironment: 'DEV',
-      embedAssets: true,
-      embedAttachments: true,
-      outputFolder: 'html-report',
-      minifyAssets: true,
-      startServer: false, //it is for local system
-    }],
+    [
+      "playwright-html-reporter",
+      {
+        testFolder: "tests",
+        title: "OPEN CART HTML Report",
+        project: "OPEN CART",
+        release: "9.87.6",
+        testEnvironment: "DEV",
+        embedAssets: true,
+        embedAttachments: true,
+        outputFolder: "html-report",
+        minifyAssets: true,
+        startServer: false, //"true" it is for local system
+      },
+    ],
   ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     trace: "on-first-retry",
-    headless: true,
+    headless: !!process.env.ci,
     screenshot: "on-first-failure",
     video: "on",
     baseURL: "https://naveenautomationlabs.com/opencart/index.php",
@@ -102,7 +106,7 @@ export default defineConfig({
         channel: "chrome",
         viewport: null,
         launchOptions: {
-          args: ['--start-maximized'],
+          args: ["--start-maximized"],
           ignoreDefaultArgs: ["--window-size=1280,720"],
         },
       },
