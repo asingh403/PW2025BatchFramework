@@ -35,7 +35,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     trace: "on-first-retry",
-    headless: false,
+    headless: true,
     screenshot: "on-first-failure",
     video: "on",
     baseURL: "https://naveenautomationlabs.com/opencart/index.php",
