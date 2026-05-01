@@ -182,7 +182,7 @@ jobs:
             echo "⚠️ No $ENV allure results found"
           fi
 
-      # ========== Create Index Page ==========
+# ========== Create Index Page ==========
       - name: 📝 Create Index Page
         run: |
           CURRENT_DATE=$(date '+%Y-%m-%d %H:%M:%S UTC')
@@ -199,10 +199,10 @@ jobs:
           mkdir -p github-pages
           cp .github/workflows/index.html github-pages/index.html
 
-          sed -i "s|ENV_TOKEN|${ENV}|g"           github-pages/index.html
-          sed -i "s|ENV_COLOR|#${ENV_COLOR}|g"    github-pages/index.html
-          sed -i "s|BROWSER_TOKEN|${BROWSER}|g"   github-pages/index.html
-          sed -i "s|DATE_TOKEN|${CURRENT_DATE}|g" github-pages/index.html
+          sed -i "s|ENV_TOKEN|${ENV}|g"             github-pages/index.html
+          sed -i "s|ENV_COLOR|#${ENV_COLOR}|g"      github-pages/index.html
+          sed -i "s|BROWSER_TOKEN|${BROWSER}|g"     github-pages/index.html
+          sed -i "s|DATE_TOKEN|${CURRENT_DATE}|g"   github-pages/index.html
 
       # ========== Deploy to GitHub Pages ==========
       - name: 🌐 Deploy to GitHub Pages
