@@ -151,4 +151,4 @@ jobs:
           echo "Reports Published!"
           echo "Playwright Built-in: https://asingh403.github.io/PW2025BatchFramework/${ENV}/playwright-report/index.html"
           echo "Playwright HTML Reporter: https://asingh403.github.io/PW2025BatchFramework/${ENV}/html-report/index.html"
-          echo "Allure: https://asingh403.github.io/PW2025BatchFramework/allure-report/${ENV}/index.html"
+          echo "Allure: https://asingh403.github.io/PW2025BatchFramework/${ENV}/allure-report/index.html"
