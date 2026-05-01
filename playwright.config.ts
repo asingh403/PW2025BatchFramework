@@ -28,7 +28,7 @@ export default defineConfig({
       embedAttachments: true,
       outputFolder: 'html-report',
       minifyAssets: true,
-      startServer: true,
+      startServer: false, //it is for local system
     }],
   ],
 
