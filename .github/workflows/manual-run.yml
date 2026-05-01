@@ -188,44 +188,21 @@ jobs:
           CURRENT_DATE=$(date '+%Y-%m-%d %H:%M:%S UTC')
           ENV="${{ github.event.inputs.environment }}"
           BROWSER="${{ github.event.inputs.browser }}"
-          cat > github-pages/index.html << EOF
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Playwright Manual Run - PW_2025_Batch_Framework</title>
-            <style>
-              body { font-family: Arial, sans-serif; max-width: 900px; margin: 50px auto; padding: 20px; }
-              h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-              .info { background: #e8f4fc; padding: 15px; border-radius: 8px; margin: 20px 0; }
-              .env-section { background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0; }
-              .env-section h3 { margin-top: 0; }
-              a { color: #3498db; text-decoration: none; display: inline-block; margin: 5px 10px 5px 0; padding: 8px 16px; background: #ecf0f1; border-radius: 4px; }
-              a:hover { background: #3498db; color: white; }
-              .dev { border-left: 4px solid #27ae60; }
-              .qa { border-left: 4px solid #f39c12; }
-              .stage { border-left: 4px solid #9b59b6; }
-              .prod { border-left: 4px solid #e74c3c; }
-              .timestamp { color: #7f8c8d; font-size: 0.9em; }
-            </style>
-          </head>
-          <body>
-            <h1>🎭 Playwright Manual Run Reports</h1>
-            <p class="timestamp">Last updated: ${CURRENT_DATE}</p>
-            
-            <div class="info">
-              <strong>🔹 Environment:</strong> ${ENV}<br>
-              <strong>🔹 Browser:</strong> ${BROWSER}
-            </div>
 
-            <div class="env-section ${ENV}">
-              <h3>📊 ${ENV^^} Environment Reports</h3>
-              <a href="./${ENV}/playwright-report/index.html">Playwright Report</a>
-              <a href="./${ENV}/playwright-html-report/index.html">HTML Report</a>
-              <a href="./${ENV}/allure-report/index.html">Allure Report</a>
-            </div>
-          </body>
-          </html>
-          EOF
+          if [ "$ENV" = "qa" ]; then ENV_COLOR="f39c12"
+          elif [ "$ENV" = "prod" ]; then ENV_COLOR="e74c3c"
+          elif [ "$ENV" = "dev" ]; then ENV_COLOR="27ae60"
+          elif [ "$ENV" = "stage" ]; then ENV_COLOR="9b59b6"
+          else ENV_COLOR="888888"
+          fi
+
+          mkdir -p github-pages
+          cp .github/workflows/index.html github-pages/index.html
+
+          sed -i "s|ENV_TOKEN|${ENV}|g"           github-pages/index.html
+          sed -i "s|ENV_COLOR|#${ENV_COLOR}|g"    github-pages/index.html
+          sed -i "s|BROWSER_TOKEN|${BROWSER}|g"   github-pages/index.html
+          sed -i "s|DATE_TOKEN|${CURRENT_DATE}|g" github-pages/index.html
 
       # ========== Deploy to GitHub Pages ==========
       - name: 🌐 Deploy to GitHub Pages
