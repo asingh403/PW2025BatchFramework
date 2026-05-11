@@ -967,7 +967,7 @@ jobs:
 
                   <h3>📊 View Reports</h3>
                   <p>
-                    <a href="https://asingh403.github.io/PW2025BatchFramework/ class="btn">📊 Reports Dashboard</a>
+                    <a href="https://asingh403.github.io/PW2025BatchFramework/" class="btn">📊 Reports Dashboard</a>
                     <a href="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" class="btn">🔗 View Workflow Run</a>
                   </p>
 
