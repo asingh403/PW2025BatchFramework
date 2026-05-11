@@ -1,18 +1,23 @@
-# Playwright
-# Playwright
+# Node
 node_modules/
+
+# Playwright
 /test-results/
 /playwright-report/
+/playwright-html-report/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
 
-# Allure (IMPORTANT)
+# Allure
 allure-report/
 allure-results/
 html-report/
 
-# VS Code history (CRITICAL)
+# ESLint
+eslint-report/
+
+# VS Code history
 .history/
 
 # Logs
@@ -20,4 +25,4 @@ html-report/
 
 # OS
 .DS_Store
-Thumbs.db.history/
+Thumbs.db
