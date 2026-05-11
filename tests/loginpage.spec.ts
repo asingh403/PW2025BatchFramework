@@ -9,7 +9,7 @@ test('verify valid login @sanity ', async({ homePage }) => {
 })
 
 
-test('verify invalid login @login',
+test('verify invalid login @login @sample',
   {
     // tag: ['@product', '@sanity', '@regression'],
 
