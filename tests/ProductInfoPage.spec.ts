@@ -38,7 +38,7 @@ for (let product of search) {
     );
   });
 }
-  test(`verify product Metadata `, async ({ homePage }) => {
+  test(`verify product Metadata @dev`, async ({ homePage }) => {
 
     let resultPage: ResultPage = await homePage.doSearch('macbook');
 
@@ -55,7 +55,7 @@ for (let product of search) {
   });
 
 
-  test(`verify product Pricing `, async ({ homePage }) => {
+  test(`verify product Pricing @dev`, async ({ homePage }) => {
     
     let resultPage: ResultPage = await homePage.doSearch('macbook');
 

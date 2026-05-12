@@ -137,10 +137,10 @@ jobs:
       # ✅ Clean old results
       - name: 🧹 Clean previous results
         run: |
-          rm -rf allure-results playwright-report playwright-html-report test-results
+          rm -rf allure-results playwright-report html-report test-results
 
       - name: 🧪 Run DEV tests
-        run: npx playwright test --grep "@sample" --config=playwright.config.dev.ts
+        run: npx playwright test --grep "@dev" --config=playwright.config.dev.ts
         env:
           CI: true
           ALLURE_ENVIRONMENT: DEV
@@ -173,8 +173,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-html-report-dev
-          path: playwright-html-report/
+          name: html-report-dev
+          path: html-report/
           retention-days: 30
 
       - name: 📊 Upload Allure Results
@@ -235,10 +235,10 @@ jobs:
       # ✅ Clean old results
       - name: 🧹 Clean previous results
         run: |
-          rm -rf allure-results playwright-report playwright-html-report test-results
+          rm -rf allure-results playwright-report html-report test-results
 
       - name: 🧪 Run QA tests
-        run: npx playwright test --grep "@sample" --config=playwright.config.qa.ts
+        run: npx playwright test --config=playwright.config.qa.ts
         env:
           CI: true
           ALLURE_ENVIRONMENT: QA
@@ -269,8 +269,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-html-report-qa
-          path: playwright-html-report/
+          name: html-report-qa
+          path: html-report/
           retention-days: 30
 
       - name: 📊 Upload Allure Results
@@ -333,10 +333,10 @@ jobs:
       # ✅ Clean old results
       - name: 🧹 Clean previous results
         run: |
-          rm -rf allure-results playwright-report playwright-html-report test-results
+          rm -rf allure-results playwright-report html-report test-results
 
       - name: 🧪 Run STAGE tests
-        run: npx playwright test --grep "@sample" --config=playwright.config.stage.ts
+        run: npx playwright test --config=playwright.config.stage.ts
         env:
           CI: true
           ALLURE_ENVIRONMENT: STAGE
@@ -367,8 +367,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-html-report-stage
-          path: playwright-html-report/
+          name: html-report-stage
+          path: html-report/
           retention-days: 30
 
       - name: 📊 Upload Allure Results
@@ -431,10 +431,10 @@ jobs:
       # ✅ Clean old results
       - name: 🧹 Clean previous results
         run: |
-          rm -rf allure-results playwright-report playwright-html-report test-results
+          rm -rf allure-results playwright-report html-report test-results
 
       - name: 🧪 Run PROD tests
-        run: npx playwright test --grep "@sample" --config=playwright.config.prod.ts
+        run: npx playwright test --config=playwright.config.prod.ts
         env:
           CI: true
           ALLURE_ENVIRONMENT: PROD
@@ -465,8 +465,8 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-html-report-prod
-          path: playwright-html-report/
+          name: html-report-prod
+          path: html-report/
           retention-days: 30
 
       - name: 📊 Upload Allure Results
@@ -517,8 +517,8 @@ jobs:
       - name: 📥 Download DEV HTML Report
         uses: actions/download-artifact@v4
         with:
-          name: playwright-html-report-dev
-          path: github-pages/dev/playwright-html-report
+          name: html-report-dev
+          path: github-pages/dev/html-report
         continue-on-error: true
 
       - name: 📥 Download QA Playwright Report
@@ -531,8 +531,8 @@ jobs:
       - name: 📥 Download QA HTML Report
         uses: actions/download-artifact@v4
         with:
-          name: playwright-html-report-qa
-          path: github-pages/qa/playwright-html-report
+          name: html-report-qa
+          path: github-pages/qa/html-report
         continue-on-error: true
 
       - name: 📥 Download STAGE Playwright Report
@@ -545,8 +545,8 @@ jobs:
       - name: 📥 Download STAGE HTML Report
         uses: actions/download-artifact@v4
         with:
-          name: playwright-html-report-stage
-          path: github-pages/stage/playwright-html-report
+          name: html-report-stage
+          path: github-pages/stage/html-report
         continue-on-error: true
 
       - name: 📥 Download PROD Playwright Report
@@ -559,8 +559,8 @@ jobs:
       - name: 📥 Download PROD HTML Report
         uses: actions/download-artifact@v4
         with:
-          name: playwright-html-report-prod
-          path: github-pages/prod/playwright-html-report
+          name: html-report-prod
+          path: github-pages/prod/html-report
         continue-on-error: true
 
       # ========== Download Allure Results ==========
@@ -697,28 +697,28 @@ jobs:
             <div class="env-section dev">
               <h3>🔧 DEV Environment</h3>
               <a href="./dev/playwright-report/index.html">Playwright Report</a>
-              <a href="./dev/playwright-html-report/index.html">HTML Report</a>
+              <a href="./dev/html-report/index.html">HTML Report</a>
               <a href="./dev/allure-report/index.html">Allure Report</a>
             </div>
             
             <div class="env-section qa">
               <h3>🔍 QA Environment</h3>
               <a href="./qa/playwright-report/index.html">Playwright Report</a>
-              <a href="./qa/playwright-html-report/index.html">HTML Report</a>
+              <a href="./qa/html-report/index.html">HTML Report</a>
               <a href="./qa/allure-report/index.html">Allure Report</a>
             </div>
             
             <div class="env-section stage">
               <h3>🎯 STAGE Environment</h3>
               <a href="./stage/playwright-report/index.html">Playwright Report</a>
-              <a href="./stage/playwright-html-report/index.html">HTML Report</a>
+              <a href="./stage/html-report/index.html">HTML Report</a>
               <a href="./stage/allure-report/index.html">Allure Report</a>
             </div>
             
             <div class="env-section prod">
               <h3>🚀 PROD Environment</h3>
               <a href="./prod/playwright-report/index.html">Playwright Report</a>
-              <a href="./prod/playwright-html-report/index.html">HTML Report</a>
+              <a href="./prod/html-report/index.html">HTML Report</a>
               <a href="./prod/allure-report/index.html">Allure Report</a>
             </div>
           </body>
@@ -745,22 +745,22 @@ jobs:
           echo ""
           echo "🔧 DEV Reports:"
           echo "   Playwright: https://asingh403.github.io/PW2025BatchFramework/dev/playwright-report/index.html"
-          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/dev/playwright-html-report/index.html"
+          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/dev/html-report/index.html"
           echo "   Allure:     https://asingh403.github.io/PW2025BatchFramework/dev/allure-report/index.html"
           echo ""
           echo "🔍 QA Reports:"
           echo "   Playwright: https://asingh403.github.io/PW2025BatchFramework/qa/playwright-report/index.html"
-          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/qa/playwright-html-report/index.html"
+          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/qa/html-report/index.html"
           echo "   Allure:     https://asingh403.github.io/PW2025BatchFramework/qa/allure-report/index.html"
           echo ""
           echo "🎯 STAGE Reports:"
           echo "   Playwright: https://asingh403.github.io/PW2025BatchFramework/stage/playwright-report/index.html"
-          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/stage/playwright-html-report/index.html"
+          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/stage/html-report/index.html"
           echo "   Allure:     https://asingh403.github.io/PW2025BatchFramework/stage/allure-report/index.html"
           echo ""
           echo "🚀 PROD Reports:"
           echo "   Playwright: https://asingh403.github.io/PW2025BatchFramework/prod/playwright-report/index.html"
-          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/prod/playwright-html-report/index.html"
+          echo "   HTML:       https://asingh403.github.io/PW2025BatchFramework/prod/html-report/index.html"
           echo "   Allure:     https://asingh403.github.io/PW2025BatchFramework/prod/allure-report/index.html"
           echo ""
           echo "============================================"
