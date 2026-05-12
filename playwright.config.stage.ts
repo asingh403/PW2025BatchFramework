@@ -47,7 +47,7 @@ export default defineConfig({
   },
 
   metadata: {
-    appUsername: 'stage_test@asingh.fun',
+    appUserName: 'stage_test@asingh.fun',
     appPassword: 'test@123'
   },
 
