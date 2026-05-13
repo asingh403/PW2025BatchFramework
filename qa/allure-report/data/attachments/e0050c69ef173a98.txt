@@ -1,0 +1,11 @@
+clicked on element : getByRole('link', { name: 'Register' })
+random email : auto_l2zmb6u@qa.test
+Filled text : Alice into element : getByRole('textbox', { name: 'First Name' })
+Filled text : Smith into element : getByRole('textbox', { name: 'Last Name' })
+Filled text : auto_l2zmb6u@qa.test into element : getByRole('textbox', { name: 'E-Mail' })
+Filled text : 1234567890 into element : getByRole('textbox', { name: 'Telephone' })
+Filled text : Password@123 into element : getByRole('textbox', { name: 'Password' }).first()
+Filled text : Password@123 into element : getByRole('textbox', { name: 'Password Confirm' })
+clicked on element : getByRole('radio', { name: 'Yes' })
+clicked on element : locator('[name="agree"]')
+clicked on element : getByRole('button', { name: 'Continue' })
